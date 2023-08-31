@@ -1,6 +1,9 @@
 let playerSelection = "";
 let computerSelection ="";
 
+//playerSelection = playerChoice();
+computerSelection = getComputerChoice();
+
 function playerChoice() {
     let goodEntry = false;
     do {
@@ -17,12 +20,19 @@ function playerChoice() {
     return player;
 }
 
-
-    playerSelection = playerChoice();
-
-
-
-
 function getComputerChoice() {
-    
+    let computer = Math.floor(Math.random() * 3);
+    let computerChoice = "";
+    switch (computer) {
+        case 0:
+            computerChoice = "rock";
+            break;
+        case 1:
+            computerChoice = "paper";
+            break;
+        case 2:
+            computerChoice = "scissors";
+            break;
+    }
+    return computerChoice;
 }
