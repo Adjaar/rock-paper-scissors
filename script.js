@@ -1,8 +1,9 @@
 let playerSelection = "";
 let computerSelection ="";
 
-//playerSelection = playerChoice();
+playerSelection = playerChoice();
 computerSelection = getComputerChoice();
+round(playerSelection, computerSelection);
 
 function playerChoice() {
     let goodEntry = false;
@@ -35,4 +36,46 @@ function getComputerChoice() {
             break;
     }
     return computerChoice;
+}
+
+function round(human, comp){
+    if (human.toLowerCase() == "rock") {
+        switch (comp) {
+            case "rock":
+                console.log("Same choice!");
+                break;
+            case "paper":
+                console.log(`You lose! ${comp.toLowerCase()} beats ${human.toLowerCase()}!`);
+                break;
+            case "scissors":
+                console.log(`You win! ${human.toLowerCase()} beats ${comp.toLowerCase()}!`);
+                break;
+        }
+    }
+    else if (human.toLowerCase() == "paper") {
+        switch (comp) {
+            case "paper":
+                console.log("Same choice!");
+                break;
+            case "scissors":
+                console.log(`You lose! ${comp.toLowerCase()} beats ${human.toLowerCase()}!`);
+                break;
+            case "rock":
+                console.log(`You win! ${human.toLowerCase()} beats ${comp.toLowerCase()}!`);
+                break;
+        }
+    }
+    else if (human.toLowerCase() == "scissors") {
+        switch (comp) {
+            case "scissors":
+                console.log("Same choice!");
+                break;
+            case "rock":
+                console.log(`You lose! ${comp.toLowerCase()} beats ${human.toLowerCase()}!`);
+                break;
+            case "paper":
+                console.log(`You win! ${human.toLowerCase()} beats ${comp.toLowerCase()}!`);
+                break;
+        }
+    }
 }
