@@ -8,4 +8,3 @@ Pseudocode
 5) Display whether player or computer won that round
 6) Log score to winner and start a new game
 7) Display overall winner when either player or computer wins 5 rounds
-8) Give prompt for player to start over and play again
