@@ -1,22 +1,22 @@
 let playerSelection = "";
 let computerSelection ="";
+const rock = document.querySelector('#rock');
+const paper = document.querySelector('#paper');
+const scissors = document.querySelector('#scissors');
+
 
 game();
 
 function playerChoice() {
-    let goodEntry = false;
-    do {
-        player = prompt("Please choose between rock, paper or scissors.");
-        if (player.toLowerCase() == "rock" || player.toLowerCase() == "paper" || player.toLowerCase() == "scissors"){
-            goodEntry = true;
-        }
-        else {
-            console.log("That is not one of the options. Try again");
-        }
-        
-    } while (goodEntry == false);
-
-    return player;
+    rock.addEventListener('click', () => {
+        alert("Rock");
+    })
+    paper.addEventListener('click', () => {
+        alert("Paper");
+    })
+    scissors.addEventListener('click', () => {
+        alert("Scissors");
+    })
 }
 
 function getComputerChoice() {
