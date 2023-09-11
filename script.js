@@ -1,23 +1,26 @@
 let playerSelection = "";
 let computerSelection ="";
+let playerScore = 0;
+let computerScore = 0;
 const rock = document.querySelector('#rock');
 const paper = document.querySelector('#paper');
 const scissors = document.querySelector('#scissors');
+const text = document.createElement('div');
+const container = document.querySelector('.content');
 
 
-game();
-
-function playerChoice() {
-    rock.addEventListener('click', () => {
-        alert("Rock");
-    })
-    paper.addEventListener('click', () => {
-        alert("Paper");
-    })
-    scissors.addEventListener('click', () => {
-        alert("Scissors");
-    })
-}
+rock.addEventListener('click', () => {
+    playerSelection = 'rock';
+    game();
+})
+paper.addEventListener('click', () => {
+    playerSelection = 'paper';
+    game();
+})
+scissors.addEventListener('click', () => {
+    playerSelection = 'scissors'
+    game();
+})
 
 function getComputerChoice() {
     let computer = Math.floor(Math.random() * 3);
@@ -39,37 +42,43 @@ function getComputerChoice() {
 function round(human, comp){
     let result = 0;
     if (human != comp){
-        if (human.toLowerCase() == "rock") {
+        if (human == "rock") {
             switch (comp) {
                 case "paper":
+                    text.textContent = `You lose! ${comp.toLowerCase()} beats ${human.toLowerCase()}!`
                     console.log(`You lose! ${comp.toLowerCase()} beats ${human.toLowerCase()}!`);
                     result = 1;
                     break;
                 case "scissors":
+                    text.textContent = `You win! ${human.toLowerCase()} beats ${comp.toLowerCase()}!`
                     console.log(`You win! ${human.toLowerCase()} beats ${comp.toLowerCase()}!`);
                     result = 2;
                     break;
             }
         }
-        else if (human.toLowerCase() == "paper") {
+        else if (human == "paper") {
             switch (comp) {
                 case "scissors":
+                    text.textContent = `You lose! ${comp.toLowerCase()} beats ${human.toLowerCase()}!`
                     console.log(`You lose! ${comp.toLowerCase()} beats ${human.toLowerCase()}!`);
                     result = 1;
                     break;
                 case "rock":
+                    text.textContent = `You win! ${human.toLowerCase()} beats ${comp.toLowerCase()}!`
                     console.log(`You win! ${human.toLowerCase()} beats ${comp.toLowerCase()}!`);
                     result = 2;
                     break;
             }
         }
-        else if (human.toLowerCase() == "scissors") {
+        else if (human == "scissors") {
             switch (comp) {
                 case "rock":
+                    text.textContent = `You lose! ${comp.toLowerCase()} beats ${human.toLowerCase()}!`
                     console.log(`You lose! ${comp.toLowerCase()} beats ${human.toLowerCase()}!`);
                     result = 1;
                     break;
                 case "paper":
+                    text.textContent = `You win! ${human.toLowerCase()} beats ${comp.toLowerCase()}!`
                     console.log(`You win! ${human.toLowerCase()} beats ${comp.toLowerCase()}!`);
                     result = 2;
                     break;
@@ -77,28 +86,25 @@ function round(human, comp){
         }
     }
     else {
+        text.textContent = "Same choice! Try again!";
         console.log("Same choice! Try again!");
     }
+    playerSelection = "";
     return result;
 }
 
 function game(){
-    let playerScore = 0;
-    let computerScore = 0;
     let roundResult;
-    while (playerScore < 5 && computerScore < 5){
-        playerSelection = playerChoice();
-        computerSelection = getComputerChoice();
-        roundResult = round(playerSelection, computerSelection);
+        roundResult = round(playerSelection, getComputerChoice());
         if (roundResult == 1){
             computerScore += 1;
         } 
         else if (roundResult == 2){
             playerScore += 1;
         }
-        console.log("Player Score: ", playerScore);
-        console.log("Computer Score: ", computerScore);
-    }
-    let winner = (playerScore > computerScore) ? "You win! Congratulations" : "Computer wins, better luck next time!";
-    console.log(winner);
+        container.appendChild(text);
+        if (playerScore == 3 || computerScore == 3){
+            let winner = (playerScore > computerScore) ? "You win! Congratulations" : "Computer wins, better luck next time!";
+            console.log(winner);
+        }
 }
