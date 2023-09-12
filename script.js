@@ -7,7 +7,10 @@ const paper = document.querySelector('#paper');
 const scissors = document.querySelector('#scissors');
 const text = document.createElement('div');
 const container = document.querySelector('.content');
+const pScore = document.querySelector('#playerScore');
+const cScore = document.querySelector('#compScore');
 
+text.classList.add('output');
 
 rock.addEventListener('click', () => {
     playerSelection = 'rock';
@@ -98,13 +101,16 @@ function game(){
         roundResult = round(playerSelection, getComputerChoice());
         if (roundResult == 1){
             computerScore += 1;
+            cScore.textContent = computerScore;
         } 
         else if (roundResult == 2){
             playerScore += 1;
+            pScore.textContent = playerScore;
         }
         container.appendChild(text);
-        if (playerScore == 3 || computerScore == 3){
-            let winner = (playerScore > computerScore) ? "You win! Congratulations" : "Computer wins, better luck next time!";
+        if (playerScore == 5 || computerScore == 5){
+            text.textContent = (playerScore > computerScore) ? "You win! Congratulations!" : "Computer wins, better luck next time!";
+
             console.log(winner);
         }
 }

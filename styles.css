@@ -26,4 +26,19 @@ button {
     height: 250px;
     border: solid white 2px;
     border-radius: 5px;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+button:active {
+    background-color: #fff;
+    color: #000;
+}
+
+#score {
+    font-size: 32px;
+}
+
+.output {
+    font-size: 24px;
 }
