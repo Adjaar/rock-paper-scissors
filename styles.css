@@ -9,7 +9,7 @@
 h1 {
     font-size: 48px;
     font-weight: bold;
-    border: solid white 2px;
+    text-decoration: underline;
     display: inline;
     margin: 24px;
     padding: 16px;
@@ -17,7 +17,6 @@ h1 {
 
 .content {
     margin: 24px;
-    border: white 2px solid;
     height: 600px;
 }
 
@@ -33,6 +32,19 @@ button {
 button:active {
     background-color: #fff;
     color: #000;
+}
+
+.small {
+    width: 50px;
+    height: 25px;
+    background-color: #fff;
+    color: #000;
+    font-size: 12px;
+}
+
+.small:hover {
+    background-color: #000;
+    color: #fff;
 }
 
 #score {
